@@ -16,10 +16,13 @@ const foodTotal = calculateTotal(food);
 const total = gasTotal + foodTotal;
 const randomTotal = calculateTotal([1000, 1000, 1000]);
 
+// How to group arrays all together? => make an Object for them.
+
 console.log({
   gas: gasTotal,
   food: foodTotal,
   total: total,
   randomTotal: randomTotal
 });
+
 // {gas: 190, food: 100, total: 290, randomTotal: 3000}

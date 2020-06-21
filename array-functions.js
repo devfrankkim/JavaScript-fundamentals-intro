@@ -8,6 +8,14 @@ function calculateTotal(arr) {
   for (let i = 0; i < arr.length; i++) {
     total = total + arr[i];
   }
+
+  if (total > 100) {
+    console.log(`dang! you are spending way too muchhh!!`);
+    return total;
+  }
+
+  console.log(`You are good. Total is less than 100`);
+
   return total;
 }
 
@@ -26,3 +34,17 @@ console.log({
 });
 
 // {gas: 190, food: 100, total: 290, randomTotal: 3000}
+
+// Example (2)
+// if total > 100, return;
+// {gas: undefined, food: 100, total: NaN, randomTotal: undefined}
+
+/* 
+   Because it's a conditon to return the value or not. 
+
+   " if total > 100, return; "
+
+   It means, you are not returning anything if total > 100, 
+   so basically, you are just ignoring the condition. 
+   It is flexible.
+*/

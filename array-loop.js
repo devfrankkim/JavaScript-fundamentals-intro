@@ -13,4 +13,6 @@ for (let i = 0; i < names.length; i++) {
 
 console.log(newArray);
 
+// map funciton
+
 let newArray = names.map(x => x + " " + lastName);

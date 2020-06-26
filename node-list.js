@@ -39,4 +39,8 @@ realItems.forEach(function(items) {
 console.log(realItems);
 
 var h4 = document.getElementsByTagName("h4")[0];
-console.log(h4.attributes);
+console.log(h4.attributes); // NamedNodeMap {length: 0}
+
+var a = document.querySelectorAll("h1");
+console.log(a[0]); // <h1 style="color: red;">Hello</h1>
+console.log(a[0].attributes); // NamedNodeMap {0: style, style: style, length: 1}

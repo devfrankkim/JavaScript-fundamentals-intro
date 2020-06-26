@@ -22,6 +22,9 @@ document.querySelector("element"); // do something;
 // access to the global window object through JS file
 // window object
 
+// the browser will look for window object eventually so you can skip it.
+// console.dir
+
 // within the document property, we have access to the methods and other properties
 
 // returns a node object or a node list(which is an arraylike object)

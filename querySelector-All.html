@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>querySelector(All)</title>
+  </head>
+  <body>
+    <ul id="result">
+      <li class="special">frank</li>
+      <li class="special">andrea</li>
+      <li class="special">tessa</li>
+      <li class="special last">lynn</li>
+    </ul>
+    <h1 class="heading">frank</h1>
+    <h1 class="heading">frank</h1>
+    <h1 class="heading">frank</h1>
+    <script>
+      const idResult = document.querySelector("#result");
+      idResult.style.color = "pink";
+
+      const classResult = document.querySelector(".special");
+      classResult.style.color = "blue";
+
+      const lastClassResult = document.querySelector("li:last-child");
+      lastClassResult.style.color = "purple";
+
+      const headingResult = document.querySelector(".heading");
+      headingResult.style.color = "purple";
+
+      // querySelectorAll has access for forEach method
+      const list = document.querySelectorAll(".special");
+
+      console.log(list);
+      list.forEach(function(item) {
+        console.log(item);
+        item.style.color = "brown";
+      });
+    </script>
+  </body>
+</html>

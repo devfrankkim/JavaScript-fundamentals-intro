@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>parentElement | parentNode</title>
+  </head>
+  <body>
+    <div id="result">
+      <h1>Hello World</h1>
+      <div class="second">
+        <h2>Second heading</h2>
+        <h3>Second heading</h3>
+        <h3>Second heading</h3>
+      </div>
+    </div>
+    <script>
+      const heading = document.querySelector("h2");
+      const heading3 = document.querySelector("h3");
+
+      console.log(heading); //  <h2>Second heading</h2>
+      console.log(heading.parentElement); // <div class="second"> </div>
+      console.log(heading.parentElement.parentElement); // <div id="result"> </div>
+      console.log(heading.parentElement.parentElement.parentElement); // <body></body>
+      console.log(
+        heading.parentElement.parentElement.parentElement.parentElement.nodeName
+      ); // HTML
+      console.log(
+        heading.parentElement.parentElement.parentElement.parentElement
+          .parentElement
+      ); // null
+      console.log(
+        heading.parentElement.parentElement.parentElement.parentElement
+          .parentNode
+      ); // #document
+      console.log(heading.childNodes); // NodeList [text] => text node
+      console.log(heading.children); // HTMLCollection [] => element
+
+      const parent = heading.parentElement.parentElement;
+      parent.style.color = "red";
+
+      const parent3 = heading3.parentElement;
+      parent3.style.color = "purple";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>children | childNodes</title>
+  </head>
+  <body>
+    <p>
+      <h4>Select the element or group of elements</h4> <br />
+
+      <h4>You have to be careful when using childNodes because it's returning the
+      white space with a text node. </h4><br />
+      
+      <h4>childNodes Contain all nodes, including text nodes and
+      comment nodes </h4>
+
+      <h3> 
+        childNodes => returns all childNodes including whitespace
+          which is treated as a *text node*</h3>
+      <h3>  
+        children => HTMLCollection (only contain
+          ELEMENT nodes) 
+      </h3>
+      <h3>firstChild => #text</h3>
+      <h3>lastChild => #text</h3>
+    
+    </p>
+    <ul id="result">
+      <li>frank</li>
+      <li>andrea</li>
+      <li>tessa</li>
+      <li>wesley</li>
+    </ul>
+    <script>
+      const result = document.querySelector("#result");
+      const allChildren = result.childNodes;
+      console.log(allChildren); // NodeList(9) [text, li, text, li, text, li, text, li, text]
+
+      const children = result.children;
+      console.log(children); // HTMLCollection(4) [li, li, li, li] => accessing with index #
+
+      console.log(result.firstChild);
+      console.log(result.lastChild);
+    </script>
+  </body>
+</html>

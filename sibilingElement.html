@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>nextSibling(previous) | nextElementSibling(previous)</title>
+  </head>
+  <body>
+    <h3>
+      First "nextSibling" & "previousSibling" RETURNS white space so make sure
+      add two "nextSibling" & "previousSibling"
+      <br />
+      <br />
+      or
+      <br />
+      <br />
+      Just use "nextElementSibling" & "previousElementSibling"
+    </h3>
+    <ul id="result">
+      <li class="first">frank</li>
+      <li>tessa</li>
+      <li>wesley</li>
+      <li id="last">andrea</li>
+    </ul>
+    <script>
+      const first = document.querySelector(".first");
+      const second = first.nextSibling;
+      const third = first.nextSibling.nextSibling;
+      const thirdStyle = (first.nextSibling.nextSibling.style.color = "red");
+      const last = document.querySelector("#last");
+
+      // nextSibling
+      console.log(first); //  <li class="first">frank</li>
+      console.log(second); // #text => returns whitespace
+      console.log(third); //   <li style="color: red;">tessa</li>
+      console.log(thirdStyle); //  red
+      console.log(last.nextSibling); // #text
+      console.log(last.nextSibling.nextSibling); // null
+
+      // previousSibling
+      console.log(last.previousSibling.previousSibling); //  <li>wesley</li>
+
+      // nextElementSibling
+      console.log(first.nextElementSibling); // <li style="color: red;">tessa</li>
+
+      // previousElementSibling
+      console.log(last.previousElementSibling); // <li>wesley</li>
+      console.log(last.previousElementSibling.previousElementSibling); // <li style="color: red;">tessa</li>
+    </script>
+  </body>
+</html>

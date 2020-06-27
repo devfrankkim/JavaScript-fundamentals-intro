@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Map DOM</title>
+  </head>
+  <body>
+    <script>
+      const people = [
+        { name: "frank", age: 30, position: "developer" },
+        { name: "andrea", age: 20, position: "designer" },
+        { name: "tessa", age: 10, position: "dog" }
+      ];
+
+      const newNames = people.map(function(person) {
+        return `<h1>${person.name}</h1>`;
+      });
+
+      console.log(newNames);
+
+      // Example 6 -> DOM manipulation
+
+      document.body.innerHTML = newNames.join(" ");
+    </script>
+  </body>
+</html>

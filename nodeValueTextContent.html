@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      nodeValue | textContent
+    </title>
+  </head>
+  <body>
+    <h1 id="special">You have to be careful when using nodeValue</h1>
+    <h1>
+      You need to take extra steps in order to get the proper
+      value(firstChild.nodeValue)
+    </h1>
+    <h1>OR just use "textContent"</h1>
+    <script>
+      const item = document.getElementById("special");
+      const value = item.nodeValue; // null
+      const firstChildValue = item.firstChild.nodeValue;
+      const easyValue = item.textContent;
+
+      console.log(value); // null (childNodes)
+      console.log(item.childNodes); // NodeList [text]
+      console.log(item.childNodes[0]); // "You have to be careful when using nodeValue"
+      console.log(item.firstChild); // "You have to be careful when using nodeValue"
+
+      // textContent or firstChild.nodeValue
+      console.log(item.childNodes[0].nodeValue); //You have to be careful when using nodeValue
+      console.log(item.firstChild.nodeValue); // You have to be careful when using nodeValue
+      console.log(firstChildValue); // You have to be careful when using nodeValue
+      console.log(easyValue); // You have to be careful when using nodeValue
+    </script>
+  </body>
+</html>

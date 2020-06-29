@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>getAttribute | setAttribute</title>
+  </head>
+  <body>
+    <p>
+      getAttribute => Get the values of the attribute (class, id, href .. etc)
+    </p>
+    <ul>
+      <li class="first" id="special">I have class of "first"</li>
+      <a href="first.html" id="idLink">Random link</a>
+      <li>I DO NOT HAVE any attributes</li>
+    </ul>
+    <script>
+      const first = document.querySelector(".first");
+      const classValue = first.getAttribute("class");
+      const idValue = first.getAttribute("id");
+      console.log(classValue); // first
+      console.log(idValue); // special
+
+      const link = document.getElementById("idLink"); // get the Element
+      console.log(link); // <a href="first.html" id="idLink">Random link</a>
+
+      const showLink = link.getAttribute("href"); // get the values of the Attribute
+      console.log(showLink); // first.html
+
+      // No attribute
+      const createAttribute = link.nextElementSibling;
+      // createAttribute => <li>I DO NOT HAVE any attributes</li>
+
+      createAttribute.setAttribute("class", "first");
+      console.log(createAttribute); // <li class="first">I DO NOT HAVE any attributes</li>
+
+      createAttribute.textContent = `I CREATED an attribute!! CREATE.setAttribute("class", "name" )`;
+
+      const firstClass = document.querySelectorAll(".first");
+      console.log(firstClass); // NodeList(2) [li#special.first, li.first]
+    </script>
+  </body>
+</html>

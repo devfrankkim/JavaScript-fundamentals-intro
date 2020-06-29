@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>classList(add, contains) | className</title>
+    <style>
+      .classFirst {
+        background-color: rgb(155, 255, 255);
+        color: rgb(255, 153, 51);
+        letter-spacing: 1rem;
+      }
+      .classSecond {
+        background-color: purple;
+        color: white;
+        letter-spacing: 1rem;
+      }
+      .classFourth {
+        background-color: brown;
+        color: white;
+      }
+      h4 {
+        font-size: 2rem;
+      }
+
+      .difference {
+        box-sizing: border-box;
+        letter-spacing: 0.2rem;
+        outline: none;
+        cursor: pointer;
+        color: white;
+        font-size: 2rem;
+        border-radius: 20px;
+        background-color: blueviolet;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+      }
+      .random {
+        font-size: 2rem;
+        background-color: rgb(254, 143, 143);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="first" class="classFirst">className</h1>
+    <h1 id="second">multi classNames</h1>
+    <h1 id="third">classList</h1>
+    <h1 id="fourth">four</h1>
+    <button id="differenceName">className = "one two"</button>
+    <button id="differenceList">
+      DOMTokenList[] <br /><br />
+      classList.add("one", "two") <br /><br />
+      classList.remove("one")
+    </button>
+    <script>
+      const first = document.getElementById("first"); // get the Element
+      const second = document.getElementById("second");
+      const third = document.getElementById("third");
+      const fourth = document.getElementById("fourth");
+      const differenceName = document.getElementById("differenceName");
+      const differenceList = document.getElementById("differenceList");
+
+      // =========== className | classList ===========
+      differenceName.className = "difference random";
+      differenceList.classList.add("difference", "random");
+      differenceList.classList.remove("random");
+
+      console.log(differenceName); // <button id="differenceName" class="difference random">className: Frst come, first served</button>
+      console.log(differenceList); // <button id="differenceList" class="random difference">classList: Last class name is king</button>
+
+      console.log(first); // <h1 id="first" class="classFirst">className</h1>
+      const firstValue = first.className;
+      console.log(firstValue); // classFirst
+
+      // =========== How to use multiple classNames ===========
+      second.className = "classSecond classFirst";
+      console.log(second); // <h1 id="second" class="classSecond classFirst">classList</h1>
+
+      // =========== How to use classList.add() ===========
+      third.classList.add("classSecond");
+      console.log(third); // <h1 id="third" class="classSecond">classList</h1>
+      console.log(third.classList); // DOMTokenList ["classSecond", value: "classSecond"]
+      console.log(third.className); // classSecond
+
+      console.log(fourth.classList); // DOMTokenList [value: ""]
+      fourth.classList.add("classFourth");
+      fourth.classList.add("classSecond");
+      console.log(fourth); // <h1 id="fourth" class="classFourth classSecond">four</h1>
+
+      // ===========  How to use classList.contains()    ===========
+      let result = differenceList.classList.contains("difference");
+      let resultRandom = differenceList.classList.contains("random");
+
+      console.log(result); // true
+      console.log(resultRandom); // false
+
+      if (result) {
+        console.log("You got it!");
+      } else {
+        console.log("Does not have the class");
+      }
+    </script>
+  </body>
+</html>

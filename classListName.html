@@ -41,6 +41,11 @@
         font-size: 2rem;
         background-color: rgb(254, 143, 143);
       }
+      p {
+        font-size: 1.4rem;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
     </style>
   </head>
   <body>
@@ -54,6 +59,17 @@
       classList.add("one", "two") <br /><br />
       classList.remove("one")
     </button>
+    <p>
+      Using "classList", you can add or remove a class without affecting any
+      others the element may have. <br /><br />
+      But if you assign "className", <br /><br />
+      it will wipe out any existing classes while adding the new one (or if you
+      assign an empty string it will wipe out all of them).<br /><br />
+      Assigning "className" can be a convenience for cases where you are
+      "certain" no other classes will be used on the element,<br /><br />
+      but I would normally use the "classList" methods exclusively. <br /><br />
+      And "classList" also has handy "toggle" and "replace" methods.
+    </p>
     <script>
       const first = document.getElementById("first"); // get the Element
       const second = document.getElementById("second");

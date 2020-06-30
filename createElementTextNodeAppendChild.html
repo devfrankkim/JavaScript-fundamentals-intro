@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>createElement | createTextNode | appendChild</title>
+    <style>
+      .magicClass {
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      createElement('element') <br />
+      createTextNode('text content') <br />
+      element.appendChild(childElement) <br />
+    </p>
+    <div id="result">
+      <h1 class="red">I am the child of result</h1>
+    </div>
+    <script>
+      const result = document.querySelector("#result");
+
+      // create an empty element
+      const bodyDiv = document.createElement("div");
+
+      // create text node
+      const text = document.createTextNode("TextNode just created");
+      bodyDiv.appendChild(text);
+      document.body.appendChild(bodyDiv);
+
+      // create an empty elements and add class and show the elements on the screen
+      console.log(result.children); // HTMLCollection [h1.red]
+
+      const heading = document.createElement("h2");
+      const headingText = document.createTextNode(
+        "I am creating my own textNode"
+      );
+      heading.appendChild(headingText);
+      console.log(heading); // <h2>I am creating my own textNode</h2>
+      heading.classList.add("magicClass"); // <h2 class="magicClass">I am creating my own textNode</h2>
+      result.appendChild(heading);
+
+      // difference between append and appendChild
+      document.body.append("yeheyyy");
+      document.body.appendChild("yeheyyy"); // Uncaught TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>innerHTML | textContent</title>
+    <style>
+      body {
+        font-size: 1.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="first">
+      <li class="item">list item(class="item") 1</li>
+      <li>list item 2</li>
+    </ul>
+    <div id="second">
+      <p>I have "textContent"(#second)</p>
+    </div>
+    <h3>similarity and the difference</h3>
+    <h2>
+      innerHTML => WHOLE HTML content<br /><br />
+      textContent => ONLY text <br /><br />
+    </h2>
+    <script>
+      const list = document.getElementById("first");
+      const divSecond = document.getElementById("second");
+      const item = document.querySelector(".item");
+
+      console.log(divSecond.textContent); //  I have "textContent"
+      console.log(divSecond.innerHTML); // <p>I have "textContent"(#second)</p>
+      console.log(list.textContent); //   list item(class="item") 1  list item 2
+      console.log(list.innerHTML); //   <li class="item">list item(class="item") 1 </li> & <li>list item 2</li>;
+
+      const randomValue = "randome value 9999";
+
+      const createUl = document.createElement("ul");
+      createUl.innerHTML = `<h4> [using innerHTML]</h4> 
+        <li class="item">list item(class="item") 1 </li>
+        <li>list item 2 </li>
+        <li>list item 3 </li>
+        <li>${randomValue} </li>
+      `;
+      console.log(createUl);
+      document.body.append(createUl);
+    </script>
+  </body>
+</html>

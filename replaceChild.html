@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>replaceChild</title>
+    <style>
+      body {
+        font-size: 1.2rem;
+      }
+      .red {
+        color: white;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>parentNode.replaceChild(newChild, oldChild)</h1>
+    <h3>
+      The Node.replaceChild() method replaces a child node within the given
+      (parent) node
+    </h3>
+    <p>
+      replaceChild('new', 'old')
+    </p>
+    <script>
+      const paragraph = document.querySelector("p");
+      const heading = document.createElement("h1");
+      const headingText = document.createTextNode("replacing child");
+
+      heading.classList.add("red");
+      heading.appendChild(headingText);
+      document.body.append(heading);
+      document.body.replaceChild(heading, paragraph);
+    </script>
+  </body>
+</html>

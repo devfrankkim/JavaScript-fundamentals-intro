@@ -8,6 +8,7 @@
     <style>
       body {
         font-size: 1.5rem;
+        line-height: 2rem;
       }
       .magicClass {
         color: blueviolet;
@@ -23,6 +24,10 @@
     <div id="result">
       <h1 class="red">I am the child of result</h1>
     </div>
+    <h3>
+      Using append you can append an Element (Node or DOMString) to the DOM.
+      <br />
+    </h3>
     <script>
       const result = document.querySelector("#result");
 
@@ -47,8 +52,10 @@
       result.appendChild(heading);
 
       // difference between append and appendChild
-      document.body.append("yeheyyy");
-      document.body.appendChild("yeheyyy"); // Uncaught TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
+      document.body.append(
+        "append() is working with String BUT appendChild ONLY accepts Node objects"
+      );
+      document.body.appendChild("appendChild() isn't working with String"); // Uncaught TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
     </script>
   </body>
 </html>

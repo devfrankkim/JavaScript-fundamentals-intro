@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>append | appendChild</title>
+    <style>
+      .append {
+        background-color: rgb(161, 250, 221);
+      }
+      .appendChild {
+        background-color: rgb(255, 220, 226);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Difference between append and appendChild</h1>
+    <hr />
+    <h2 class="append">
+      append() => you can append an Element (Node or DOMString) to the DOM.
+      <br /><br />
+
+      1. Append Element <br />
+      2. Adding multiple Elements <br />
+      3. append() does NOT actually return values
+      <br /><br /><br />
+      Summary => <br /><br />
+      No return value<br />
+      Support multiple Element append <br />
+      You can add Node & DOMString <br />
+    </h2>
+    <hr />
+    <h2 class="appendChild">
+      appendChild() => Using appendChild, you can only append a Node.
+      <br /><br />
+      When you try to add "String" to the appendChild(), then it will throw
+      error
+
+      <br /><br />
+      Using appendChild, you can only append ONLY ONE Node in single method call
+      <br /><br /><br />
+      Summary => <br /><br />
+      Supports only Node addition <br />
+      Returns the appended Node <br />
+      Only one element can be appended <br />
+    </h2>
+    <script>
+      // Append Element
+
+      var parent = document.createElement("div");
+      var child = document.createElement("p");
+
+      parent.append(child);
+      parent.append("Inserting Text(DOMString)");
+
+      // Adding multiple Elements
+
+      var parent = document.createElement("div");
+      var child1 = document.createElement("p");
+      var child2 = document.createElement("span");
+
+      parent.append(child1, child2);
+
+      // appendChild
+
+      var parent = document.createElement("div");
+      var child = document.createElement("p");
+
+      parent.appendChild(child);
+
+      // When you try to add String to the appendChild, then it will throw error!!
+
+      parent.append("String not accepted for appendChild");
+      parent.appendChild("String not accepted for appendChild"); //parameter 1 is not of type 'Node'.
+
+      //  The appendChild method returns the Node which is appended
+
+      var parent = document.createElement("div");
+      var child = document.createElement("span");
+      console.log(parent, child); // <div></div>  <span></span>
+
+      console.log(parent.append(child)); // undefined
+      console.log(parent.appendChild(child)); // <span></span>
+
+      console.log(parent); // <div>  <span></span>  </div>
+    </script>
+  </body>
+</html>

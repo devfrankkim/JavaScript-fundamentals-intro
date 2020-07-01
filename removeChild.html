@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>removeChild</title>
+    <style>
+      p {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>removing Nodes with remove()</h3>
+    <div id="result">
+      <h2>remove(new function) - removeChild</h2>
+      <h3>removeChild requires a parent</h3>
+    </div>
+    <p>
+      The node is not actually removed <br />
+      The confusion might be because you might think removing an element means
+      something like killing or destroying it. <br />
+      But in fact, the concept of removal basically means breaking the
+      relationship between a child and its parent. It's just a detachment.
+      <p />
+    </p>
+    <p> <b> Element1(parent) > Element2(child)</b> <br>
+     => <strong>Element1 - Element2</strong> 
+    </p>
+    
+    <p>
+      Shouldn't I get an error while trying to insert an element which does not
+      exist? => No, because it still exists.
+    </p>
+    <p>
+      How is remove different from removeChild? <br />
+      => remove only needs a reference to the child. removeChild needs a
+      reference both to the parent and the child. The result is identical.
+    </p>
+    <p>
+      Is there any way to ensure that element is actually removed from memory? <br>
+      => No. You can only unreference it and hope that there is a garbage collector which will detect the object is not referenced and then will remove it
+
+    </p>
+    <script>
+      const bodyH3 = document.querySelector("h3");
+
+      // removeChild() requires a parent
+      document.body.removeChild(bodyH3);
+
+      // remove()
+      const result = document.querySelector("#result");
+      const heading2 = result.querySelector("h2");
+      const heading3 = result.querySelector("h3");
+      console.log(heading3); //  <h3>removeChild</h3>
+      result.removeChild(heading3);
+      console.log(heading3); //  <h3>removeChild</h3>
+    </script>
+  </body>
+</html>

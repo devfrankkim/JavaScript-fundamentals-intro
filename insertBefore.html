@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>insertBefore</title>
+    <style>
+      body {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      parentNode.insertBefore('element', 'location')
+    </p>
+    <div id="parentElement">
+      <span id="childElement">insertBefore('element', 'before this node')</span>
+    </div>
+    <script>
+      // Create the new node to insert
+      let newNode = document.createElement("span");
+
+      // Get a reference to the parent node
+      let parentDiv = document.getElementById("childElement").parentNode;
+      console.log(parentDiv);
+
+      var sp2 = document.getElementById("childElement");
+      parentDiv.insertBefore(newNode, sp2);
+      /*
+        <div id="parentElement">
+            <span></span>
+            <span id="childElement">foo bar</span>
+        </div>
+      */
+
+      // Begin test case [ 2 ] : childElement is of Type undefined
+
+      var sp2 = undefined; // Non-existent node of id "childElement"
+      parentDiv.insertBefore(newNode, sp2); // Implicit dynamic cast to type Node
+
+      // Begin test case [ 3 ] : childElement is of Type "undefined" ( string )
+      var sp2 = "undefined"; // Non-existent node of id "childElement"
+      parentDiv.insertBefore(newNode, sp2); // Generates "Type Error: Invalid Argument"
+      // End test case [ 3 ]
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Event Object | event.type | event.currentTarget | preventDefault | this
+    </title>
+    <style>
+      body {
+        line-height: 3rem;
+      }
+      a {
+        display: inline-block;
+        margin-top: 100vh;
+        font-size: 2rem;
+      }
+      .currentTargetClassList {
+        font-size: 7rem;
+        color: blue;
+      }
+      p {
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">click me1</button>
+    <button class="btn1">click me2</button>
+    <h1>heading</h1>
+    <div>
+      <h2>heading2</h2>
+    </div>
+    <hr />
+    <p>
+      currentTarget property is always always going to point to an element that
+      has the addEventListener attached to it. <br />
+      => so it's always going to point to the particular element
+    </p>
+    <hr />
+    <p>
+      event object argument (e, event) <br />
+      event is a giant Object (triggered event) <br />
+      event.type => ex) click , mouseover and etc<br />
+      event.currentTarget => RETURNS the element <br />
+      this => function() or arrow function<br />
+      preventDefault() - prevents default behavior <br />
+    </p>
+    <a href="#" id="link">random link will move to the top page by default</a>
+    <script>
+      //   event object argument (e, event)
+      //   event is a giant Object (triggered event)
+      //   event.type => ex) click, mouseover
+      //   event.currentTarget => RETURNS the element
+      //   "this"
+      //   preventDefault() - prevents default behavior
+
+      const heading = document.querySelector("h1");
+      const heading2 = document.querySelector("h2");
+      const button = document.querySelector(".btn");
+      const button1 = document.querySelector(".btn1");
+      const link = document.querySelector("a");
+
+      //   heading.addEventListener("click", () => {
+      //     heading.style.backgroundColor = "blue";
+      //     heading.style.color = "white";
+      //     console.log(this); // Window
+      //   });
+
+      heading.addEventListener("click", function() {
+        heading.style.backgroundColor = "blue";
+        heading.style.color = "white";
+        console.log(this); // <h1 style="background-color: blue; color: white;">heading</h1>
+      });
+
+      // What happens if the object is selected instead of giving variables?
+      // What if you make mistakes with variables? ex) heading => headings
+
+      heading2.addEventListener("click", function(event) {
+        console.log(event); // MouseEvent {isTrusted: true, screenX: 712, screenY: 260, clientX: 57, clientY: 126, …}
+        console.log(event.currentTarget); // <h2>heading2</h2>
+        console.log(this); // <h2>heading2</h2>
+      });
+
+      button.addEventListener("click", function(event) {
+        console.log(event); // MouseEvent {isTrusted: true, screenX: 713, screenY: 151, clientX: 58, clientY: 17, …}
+        console.log(event.currentTarget); // <button class="btn">click me</button>
+        console.log(this); // <button class="btn">click me</button>
+      });
+
+      // ========== Adding classList to event.currentTarget ==========
+      button1.addEventListener("click", function(event) {
+        event.currentTarget.classList.add("currentTargetClassList");
+        console.log(event.type); // click
+        console.log(this); // <button class="btn1 currentTargetClassList">click me2</button>
+      });
+
+      //   const linkFunction = () => {
+      //     console.log(e); // MouseEvent {isTrusted: true, screenX: 771, screenY: 872, clientX: 116, clientY: 738, …}
+      //     e.preventDefault(); // Stopping the default behavior so the page won't move to the top
+      //     console.log(this); // Window
+      //   };
+
+      function linkFunction(e) {
+        console.log(e); // MouseEvent {isTrusted: true, screenX: 771, screenY: 872, clientX: 116, clientY: 738, …}
+        e.preventDefault(); // Stopping the default behavior so the page won't move to the top
+        console.log(this); // <a href="#" id="link">random link</a>
+      }
+      link.addEventListener("click", linkFunction);
+    </script>
+  </body>
+</html>

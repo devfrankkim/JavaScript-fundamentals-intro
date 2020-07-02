@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Change CSS With Style Property</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .classList {
+        background-color: purple;
+        color: white;
+        font-size: 2rem;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="random">random div looking for the CSS</div>
+    <div class="classList">using classList looking for the CSS</div>
+
+    <script>
+      // CSS
+      const random = document.querySelector(".random");
+
+      // solution 1
+      random.style.backgroundColor = "red";
+      random.style.color = "white";
+      random.style.fontSize = "2rem";
+      random.style.textTransform = "capitalize";
+      random.style.marginTop = "0";
+
+      // solution 2 => faster
+      random.classList.add("classList");
+    </script>
+  </body>
+</html>

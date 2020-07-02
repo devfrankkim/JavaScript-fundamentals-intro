@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>mousedown | mouseup | click | mouseenter | mouseleave</title>
+    <style>
+      body {
+        font-size: 2rem;
+      }
+      .btn {
+        background-color: purple;
+        color: white;
+      }
+      .heading {
+        background-color: red;
+        color: white;
+        font-size: 2rem;
+      }
+      .old {
+        background-color: brown;
+        color: white;
+        font-size: 1.3rem;
+        width: 400px;
+        height: 60px;
+        outline: none;
+        box-sizing: border-box;
+      }
+      .explain {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>events in JavaScript</h2>
+    <p>Hey, I can trigger an event</p>
+    <button class="btn">click me</button>
+    <button onclick="this.classList.add('old')">
+      Old style -> onclick="this.classList.add('old')"
+    </button>
+
+    <p id="explain">
+      We don't want the functions to run right away so we are using callbacks
+      for events.
+    </p>
+    <script>
+      // select element
+      // addEventListener()
+      // what event, what to do
+
+      const heading = document.querySelector("h2");
+      const paragraph = document.querySelector("p");
+      const button = document.querySelector("button");
+      const explain = document.getElementById("explain");
+
+      // click - fires after full action occurs
+      // mousedown - mouse is pressed
+      // mouseup - mouse is released
+      // mouseenter - moved onto an element
+      // mouseleave - moveo out of an element
+
+      // 1. mousedown 2.mouseup 3. click
+
+      button.addEventListener("click", () => {
+        console.log("clicked");
+      });
+      button.addEventListener("mousedown", () => {
+        console.log("mousedown");
+      });
+      button.addEventListener("mouseup", () => {
+        console.log("mouseup");
+      });
+
+      function changeColors() {
+        let hasClass = heading.classList.contains("heading");
+        // if already exists, remove it
+        if (hasClass) {
+          heading.classList.remove("heading");
+        } else {
+          // if DOES NOT exist, add it
+          heading.classList.add("heading");
+        }
+        console.log("finished change colors ");
+      }
+      button.addEventListener("click", changeColors);
+
+      // ======== mouseenter & mouseleave ========
+      explain.addEventListener("mouseenter", () => {
+        explain.classList.add("explain");
+      });
+      explain.addEventListener("mouseleave", () => {
+        explain.classList.remove("explain");
+      });
+    </script>
+  </body>
+</html>

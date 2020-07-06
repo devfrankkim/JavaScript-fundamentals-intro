@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CurrentTarget VS Target</title>
+    <style>
+      .button {
+        background-color: rgb(184, 245, 184);
+      }
+      button {
+        display: block;
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>
+      CurrentTarget - always refers to the element to which the event handler
+      has been attached to
+    </h4>
+    <h4>
+      target - indentify the elements where the event happend - more specific
+      and nested
+    </h4>
+    <button class="btn">first button</button>
+    <button class="btn">
+      second
+      <br /><br />
+      <strong>
+        <span> button </span>
+        <br /><br />
+        <strong>deeper nested</strong>
+        <br /><br />
+        <div>separate</div>
+      </strong>
+    </button>
+    <button class="btn">third button</button>
+    <script>
+      const btns = document.querySelectorAll(".btn");
+      console.log(btns); // NodeList(3) [button.btn, button.btn, button.btn]
+
+      btns.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+          //   console.log(e);
+          //   console.log("currentTarget", e.currentTarget);
+          //   e.currentTarget.style.color = "red";
+          console.log("target", e.target); // very specific element
+          e.target.style.color = "purple";
+
+          let hasClass = btn.classList.contains("button");
+
+          if (hasClass) {
+            btn.classList.remove("button");
+          } else {
+            btn.classList.add("button");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

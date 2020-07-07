@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>form | submit | preventDefault</title>
+    <style>
+      body {
+        font-size: 1.3rem;
+        line-height: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Submit event listener</p>
+    <p>How to get a value property?</p>
+    <p>event.preventDefault()</p>
+    <form action="" id="form">
+      <input type="text" id="name" placeholder="id.." />
+      <input type="password" id="password" placeholder="password..." />
+      <input type="submit" value="submit" />
+      <!-- <button>submit</button> -->
+    </form>
+    <h4>
+      When we are working with forms,<br />
+      We have an action="" attribute<br /><br />
+      What action attribute does, <br />
+      it tells where we are going to be sending the data <br /><br />
+
+      By default, we are grabbing the values and then sending them to server.
+      <br />
+      so if we wouldn't want the page to refresh by default behavior then we
+      need to use preventDefault().
+      <br />
+
+      <br />
+      <h4>Why? <br /></h4>
+      <h4>
+        By default, because we are not just sending the data to where the action
+        tells us <br />
+      </h4>
+      <h4>BUT also we are REFRESHING the page</h4>
+
+      <h4>
+        so it is impossible for us to grab the value if the page keeps
+        refreshing
+      </h4>
+    </h4>
+    <script>
+      const form = document.getElementById("form");
+      const name = document.getElementById("name");
+      const password = document.getElementById("password");
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        console.log("form submitted");
+        console.log(name.value);
+        console.log(password.value);
+      });
+    </script>
+  </body>
+</html>

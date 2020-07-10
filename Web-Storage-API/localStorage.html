@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web Storage API</title>
+  </head>
+  <body>
+    <p>
+      Web Storage API - provided by browser <br />
+      session storage, local storage <br />
+      session storage, local storage <br />
+      setItem, getItem, removeItem, clear <br />
+      localStorage.setItem("key", "value"); <br />
+      <br>If there's the same 'Key' then it will overwrite. </br>
+      <br
+        >So make sure you have different 'Key' if you want to have different
+        values
+      </br>
+    </p>
+    <script>
+      // ============ local Storage ===========  
+      localStorage.setItem("Key", "Value");
+      localStorage.setItem("friend", "andrea");
+      localStorage.setItem("address", "toronto");
+      // ============ overwrite =========
+
+      localStorage.setItem("me", "frank kim");
+      localStorage.setItem("me", "andrea kim"); // overwrite
+
+      // =========== variables ===========
+
+      let address = localStorage.getItem("address");
+      let me = localStorage.getItem("me");
+      console.log("address :", address);
+      console.log("me :", me);
+
+      // ========= removeItem ========
+
+      console.log("me after removeItem:", localStorage.removeItem("me")); // undefined
+
+      let meRemoved = localStorage.getItem("me");
+      console.log("removed variable ->", meRemoved); // null
+        
+      // ============ null & undefined =========
+
+       let NULL = localStorage.setItem("null", null); 
+       console.log('NULL : ', NULL)
+       let getNull = localStorage.getItem('null')
+       console.log('get null : ', getNull)
+      
+      let Undefined = localStorage.setItem("undefined", undefined);
+      console.log(Undefined) // undefined
+
+        // ================ local storage clear ================
+        // =======>  localStorage.clear()
+        
+      // ========= session =========
+
+      sessionStorage.setItem("name", "andrea-session");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stringify | parse</title>
+  </head>
+  <body>
+    <h2>JSON.stringify() & JSON.parse()</h2>
+    <br>
+    <h3>
+      * Converting values to JSON.stringify() -> EVERYTHING even '[' ']' brackets will
+      be Strings <br><br>
+      * JSON.stringify() is used to push the data with 'String'
+    </h3>
+    <h3>* Array can't be parsed!!!</h3>
+    <h3>* String gets parsed!!!</h3>
+    <h4>
+      ex) <br /><br>
+      const array = ['frank', 'kim'] <br /><br />
+
+      1. JSON.parse(array); <br /><br />
+      2. localStorage.setItem("frank", JSON.parse(array)); <br /><br />
+      => VM3844:1 Uncaught SyntaxError: Unexpected token r in JSON at position 1
+    at JSON.parse (<anonymous>) <br><br>
+    </h4>
+    <hr />
+    <h3>
+      Summary <br /><br />
+      Array will be converted into "String" in localStorage <br /><br />
+      To keep an Array format for getting datas <br /><br />
+      1. Declare an Array <br />
+      2. Make the Array JSON.stringify(Array) for setting up <br />
+      3. JSON.parse(getItem(Array)) <br />
+      4. Get the values <br />
+      5.  TO PUSH NEW DATA, you need to setItem(JSON.stringify(Array)) again  <br>
+      5.  TO GET the NEW DATA, you need to JSON.parse(getItem(Array)) again 
+      <br />
+      <hr />
+
+      ex) <br /><br />
+      const pureArray = ["Array", "Stringify()", "parse()"]; <br /><br />
+      1. localStorage.setItem('lists', JSON.stringify(pureArray))<br /><br />
+      2. const parsedArray = JSON.parse(JSON.stringify(pureArray)) <br /><br />
+      3. ["Array", "Stringify()", "parse()"]<br /><br />
+      4. parsedArray[0] -> "Array" <br /><br />
+      5. parsedArray[parsedArray.length - 1] -> "parse()" <br /><br />
+      6. parsedArray.length -> 3 <br /><br />
+      7. pureArray.push('new Data') <br><br>
+      8. pureArray => ["Array","Stringify()","parse()", "new Data"]<br><br>
+      9. "[String]" <br>
+       localStorage.getItem('lists') -> "["Array","Stringify()","parse()"]" <br><br>
+      <hr>
+      PUSHING NEW DATA <br><br>
+      10. localStorage.setItem('lists', JSON.stringify(pureArray))  <br><br>
+      11. "[String]" <br>
+      localStorage.getItem('lists') -> "["Array","Stringify()","parse()", "new Data"]"  <br> <br>
+      12. [Array]  <br> 
+      JSON.parse(localStorage.getItem('lists')) -> ["Array","Stringify()","parse()", "new Data"] <br><br>
+      
+      
+    </h3>
+    <script>
+      const pureArr = ["Array", "Stringify()", "parse()"];
+
+      localStorage.setItem('arr', JSON.stringify(pureArr))
+      console.log(localStorage.getItem('arr')) // "["Array","Stringify()","parse()"]"
+      const parsedArr = JSON.parse(JSON.stringify(pureArr)) 
+    
+      console.log(pureArr) // (3) ["Array", "Stringify()", "parse()"]
+      console.log(parsedArr) // (3) ["Array", "Stringify()", "parse()"]
+      pureArr.push('new Data')
+
+      console.log(pureArr) // (4) ["Array", "Stringify()", "parse()", "new Data"]
+      console.log('Before setting -> ',localStorage.getItem('arr'))  // Before setting ->  ["Array","Stringify()","parse()"]
+
+      localStorage.setItem('arr', JSON.stringify(pureArr))
+      console.log('After setting -> ', localStorage.getItem('arr')) // After setting ->  ["Array","Stringify()","parse()","new Data"]
+      let a = JSON.parse(localStorage.getItem('arr'))
+      console.log('a ->', a)
+      
+      // ========================= Examples =========================
+
+      // Array will be converted into "String" in localStorage
+      // To keep an Array format to get datas,
+      // 1. make the Array stringify(Array)
+      // 2. Parse the stringify(Array)
+      // 3. Get te values
+
+      const ArrayLists = ["Array", "Stringify()", "parse()"];
+      localStorage.setItem("lists", JSON.stringify(ArrayLists));
+      const parsedArray = JSON.parse(JSON.stringify(ArrayLists));
+      console.log(parsedArray); // (3) ["Array", "Stringify()", "parse()"]
+      console.log(parsedArray[0]); // "Array"
+      console.log(parsedArray[parsedArray.length - 1]); // "parse()"
+      console.log(parsedArray.length); // 3
+
+
+      
+      let animals =['Dog', 'Cat', 'Salmon', 'Tuna'];
+      
+      // if there's no localStorage.setItem here, the values will be different. TRY
+      localStorage.setItem('animals', JSON.stringify(animals))
+    
+      if(localStorage.getItem('animals')){
+        animals = JSON.parse(localStorage.getItem('animals'))
+      } else{
+        animals = []
+        animals.push('This has null value')
+      }
+
+      console.log(animals); // (4) ["Dog", "Cat", "Salmon", "Tuna"]
+      console.log(animals[0]) // Dog
+      console.log(animals[animals.lastIndexOf('Salmon')]) // Salmon
+      console.log(animals[animals.lastIndexOf('Salmon') - 1]) // Cat
+      console.log(animals[animals.length - 1]) // Tuna
+      console.log(animals.length) // 4
+      
+
+      // =============== What if adding(pushing) new values? ============
+
+      animals.push('TESSA')
+      
+      console.log(animals) // (5) ["Dog", "Cat", "Salmon", "Tuna", "TESSA"]
+      console.log(localStorage.getItem('animals')) // ["Dog","Cat","Salmon","Tuna"]
+
+      // ============ You need to set local Storge again  ============
+      
+      localStorage.setItem('animals', JSON.stringify(animals))
+
+      console.log(localStorage.getItem('animals')) // ["Dog","Cat","Salmon","Tuna","TESSA"]
+
+      // =====================   NO JSON when setting up  =======================
+      const pureArray = ["frank", "Array", "Stringify()", "parse()"];
+
+      localStorage.setItem("lists", pureArray);
+      let list = localStorage.getItem("lists");
+      console.log(list); // frank,Array,Stringify(),parse()
+      console.log(list[0]); // "f"
+      console.log(list[list.length - 1]); // ")"
+
+      let listStringify = JSON.stringify(list);
+      console.log(listStringify); // "frank,Array,Stringify(),parse()"
+      console.log(listStringify[0]); // "
+      console.log(listStringify[listStringify.length - 1]); // "
+
+      let listParse = JSON.parse(listStringify);
+      console.log(listParse); // frank,Array,Stringify(),parse()
+      console.log(listParse[0]); //  "f"
+      console.log(listParse[listParse.length - 1]); // ")"
+
+      // =====================   JSON when setting up  =======================
+
+      localStorage.setItem("setFirst", JSON.stringify(pureArray));
+      let loadSettingString = localStorage.getItem("setFirst");
+      console.log(loadSettingString); // ["frank","Array","Stringify()","parse()"] -> String
+      console.log(loadSettingString[0]); // "["
+      console.log(loadSettingString[loadSettingString.length - 1]); // "]"
+
+      let loadSettingParse = JSON.parse(loadSettingString);
+      console.log(loadSettingParse); // (4) ["frank", "Array", "Stringify()", "parse()"] -> Array
+      console.log(loadSettingParse[0]); // "frank"
+      console.log(loadSettingParse[loadSettingParse.length - 1]); // "parse()"
+
+      //   // ================== Normal values ==================
+      //   const friends = ["frank", "kim", "andrea"];
+      //   localStorage.setItem("friends", friends);
+
+      //   console.log(friends); // (3) ["frank", "kim", "andrea"]
+      //   const friendsList = localStorage.getItem("friends");
+      //   console.log(friendsList); // "frank,kim,andrea"
+      //   console.log(friendsList[0]); // 'f'
+      //   console.log(friendsList[0] === "f"); // true
+      //   console.log(friendsList.length); // 16
+      //   // ================== JSON.stringify() values ==================
+
+      //   const friendsJSON = ["frank", "kim", "andrea"];
+      //   localStorage.setItem("friendsJSON", JSON.stringify(friendsJSON));
+      //   const JSONStringify = localStorage.getItem("friendsJSON");
+      //   console.log(JSONStringify); // ["frank","kim","andrea"]
+      //   console.log(JSONStringify[0]); // "["
+      //   console.log(JSONStringify[JSONStringify.length - 1]); // "]"
+      //   console.log(JSONStringify.length); // 24
+
+      //   // ================== JSON.parse() values ==================
+
+      //   // -> pure Array can't be parsed right away!!!
+      //   // Unexpected token r in JSON at position 1 at JSON.parse (<anonymous>)
+      //   //   const pureArray = ["frank"];
+      //   //   localStorage.setItem("parse", JSON.parse(pureArray)); ->  Unexpected token r in JSON at position 1 at JSON.parse (<anonymous>)
+      //   //   const jsonParse = localStorage.getItem("parse");
+      //   //   console.log(jsonParse); -> null
+      //   // console.log(jsonParse.length); Cannot read property 'length' of null
+
+      //   const stringifyParse = JSON.parse(JSONStringify); // (3) ["frank", "kim", "andrea"]
+      //   console.log(stringifyParse); // (3) ["frank", "kim", "andrea"]
+      //   console.log(stringifyParse[0]); // 'frank'
+      //   console.log(stringifyParse.length); // 3
+
+      //   // ============ SUMMARY ORDER ============
+      //   // 1. declare an array
+      //   const pureArray = ["frank", "JSON", "Parse"];
+
+      //   // 2. Set local storage
+      //   // 2. Stringify the values
+      //   localStorage.setItem("JsonParse", JSON.stringify(pureArray));
+      //   // 3. Get the local storage values
+      //   // 3. Parse the stringify() values
+      //   const parseValues = JSON.parse(
+      //     localStorage.getItem("JsonParse", pureArray)
+      //   );
+
+      //   console.log(parseValues); // (3) ["frank", "JSON", "Parse"]
+      //   console.log(parseValues[0]); // "frank"
+      //   console.log(parseValues.length); // 3
+    </script>
+  </body>
+</html>

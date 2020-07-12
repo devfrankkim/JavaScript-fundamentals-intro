@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Event | Bubbling | Capturing</title>
+  </head>
+  <body>
+    <h3>You can use e(event) -target & currentTarget to manipulate DOM</h3>
+    <h4>event propagation - order the events are fired</h4>
+    <h4>event bubbling - clicked element first then bubbles up by defauilt</h4>
+    <h4>
+      evebt capturing - fires at the root and fires until reaches
+      target(element)
+    </h4>
+    <div class="container">
+      <ul class="list-items">
+        <li><a href="#" class="link">link</a></li>
+        <li><a href="#" class="link">link</a></li>
+        <li><a href="#" class="link">link</a></li>
+      </ul>
+    </div>
+    <h4>
+      The event bubbles up to Window by default BUT we can prevent the behavior
+      -> stopPropagation() stops bubbling up or capturing phase
+    </h4>
+    <script>
+      const container = document.querySelector(".container");
+      const ul = document.querySelector(".list-items");
+
+      function showBubbling(e) {
+        // console.log("target", e.target); // ->  specific clicked element
+        console.log("current target", e.currentTarget); // ul, div, #document, Window
+
+        //     if (e.target.classList.contains("link")) {
+        //       console.log(
+        //         "classList.contains() is so useful to check if class exists"
+        //       );
+        //     } else {
+        //       console.log("no class as `link`");
+        //     }
+      }
+
+      function stopPropagation(e) {
+        console.log("Stopping the browser default behaviour");
+        e.stopPropagation();
+      }
+
+      //   ul.addEventListener("click", stopPropagation, { capture: true }); // ul
+      //   container.addEventListener("click", showBubbling, { capture: true }); // div
+      //   document.addEventListener("click", showBubbling, { capture: true }); // ul
+      //   window.addEventListener("click", showBubbling, { capture: true }); // ul
+
+      ul.addEventListener("click", showBubbling); // ul
+      container.addEventListener("click", showBubbling); // div
+      document.addEventListener("click", showBubbling); // ul
+      window.addEventListener("click", showBubbling); // ul
+    </script>
+  </body>
+</html>

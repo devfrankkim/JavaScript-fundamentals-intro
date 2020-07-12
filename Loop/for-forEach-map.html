@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loop</title>
+  </head>
+  <body>
+    <script>
+      const pureArray = ["frank", "Array", "Stringify()", "parse()"];
+      //   console.log(pureArray);
+
+      // =========== forEach  ===========
+
+      let ul = document.createElement("ul");
+      document.body.append(ul);
+      pureArray.forEach(function (list) {
+        let li = document.createElement("li");
+        li.textContent = list;
+        ul.appendChild(li);
+
+        // ul.innerHTML += `<li> ${list}</li>`;
+      });
+
+      // =========== for - innerHTML ===========
+      //   let listContainer = document.createElement("ul");
+      //   document.body.append(listContainer);
+
+      //   for (let i = 0; i < pureArray.length; i++) {
+      //     listContainer.innerHTML += `<li> ${pureArray[i]} </li>`;
+      //   }
+
+      //  =========== for - createElement(li) & innerHTML ===========
+
+      // let ul = document.createElement("ul");
+      // document.body.append(ul);
+
+      // for (let i = 0; i < pureArray.length; i++) {
+      //   // let li = document.createElement("li");
+      //   // li.append(pureArray[i]);
+      //   // ul.append(li);
+
+      //   ul.innerHTML += `<li> ${pureArray[i]}</li>`;
+      // }
+
+      // =========== map  ===========
+
+      // let listContainer = document.createElement("ul");
+      // document.body.append(listContainer);
+
+      // const arrList = pureArray.map(function (value) {
+      //   return `<li>${value}</li>`;
+      //   // return (listContainer.innerHTML += `<li>${value}</li>`);
+      // });
+      // console.log(arrList);
+      // listContainer.innerHTML = arrList.join(" ");
+
+      // ============ for of ==============
+
+      // let ul = document.createElement("ul");
+      // let li = document.createElement("li");
+      // document.body.append(ul);
+
+      // for (let value of pureArray) {
+      //   // let li = document.createElement("li");
+      //   // ul.append(li);
+      //   // li.textContent = value;
+
+      //   li.innerHTML += `<li> ${value} </li>`;
+      //   ul.append(li);
+      // }
+    </script>
+  </body>
+</html>

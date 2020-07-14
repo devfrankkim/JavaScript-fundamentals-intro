@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>script | body | defer | async</title>
+    <script defer src="a.js"></script>
+    <script async src="b.js"></script>
+    <script src="c.js"></script>
+  </head>
+  <body>
+    Difference between async and defer and script inside &lthead&gt & &ltbody&gt
+    <br />
+    <script src="d.js"></script>
+    <script>
+      /*
+      Solution (1)
+      heading + script(js)
+
+        When the browser is parsing the HTML and sees script tags, 
+        it stops parsing and then starts downloading the JS files.
+        and then executing the JS files and then starts parsing HTML again.
+ 
+
+        Why? ->
+        what if the website is massive and the internet is slow? 
+        it will take forever to see the page so this is not a good option
+
+      Solution (2)
+      body + script(js)
+
+       When HTML is done being parsed, it starts fetching JS files and then executing the files.
+
+
+       Why? ->
+       When HTML is done being parsed, the page is ready for USERS which is good.
+       However, 
+       What if the website is full of JS files? it will take for a long time to download JS files and then excute them.
+
+
+      Solution (3)
+      head + async 
+
+      async -> boolean type(true)
+
+      When the browser is parsing the HTML and sees the "async", 
+      it downloads the JS files and then starts parsing HTML.
+      And when the files are downloaded, 
+      the browser is executing the JS files and then starts parsing the rest of HTML again.
+
+
+        Why? -> 
+        It will download the JS files faster.
+        However, 
+        JS files are being executed as soon as they are donwloaded and even before all the HTML elements are parsed.
+        So the JS files will NOT be able to read the other HTML elements.
+        Also, JS files will be executed from time to time so it might take longer for the page to be loaded.
+
+
+      Solution (4)
+      head + defer
+
+      when the browser is parsing HTML and sees "defer", 
+      it just tells the tags to download the files first.
+      And when it's done parsing HTML, it starts executing the JS files.
+
+  
+      Why? ->
+      USERS will see the page first and then the browser will execute JS right away
+      because JS files are already downloaded.
+
+      */
+    </script>
+  </body>
+</html>

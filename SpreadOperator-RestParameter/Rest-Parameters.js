@@ -11,6 +11,8 @@
 // Note: Rest parameters have to be at the last argument.
 // It's providing Array Destructuring ex) ...[number]
 
+// spread the array into a list of parameters then put the result into a new array
+
 // Before rest parameters existed,
 // to get all the arguments in a function we used arguments which is an array-likeobject.
 

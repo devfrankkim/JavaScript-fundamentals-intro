@@ -1,7 +1,3 @@
-// https://javascript.info/rest-parameters-spread
-// https://javascript.info/object-copy#cloning-and-merging-object-assign
-
-// Rest Parameters
 // spread the array into a list of parameters
 // then put the result into a new array
 // Also, the spread syntax can be used to merge arrays:
@@ -15,6 +11,7 @@ let arr2 = [8, 9, 15];
 let merged = [0, ...arr, 2, ...arr2];
 
 merged; // 0,3,5,1,2,8,9,15 (0, then arr, then 2, then arr2)
+
 // ========== Array.from() ========
 let str = "Hello";
 

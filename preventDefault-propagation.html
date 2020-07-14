@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PreventDefault vs StopPropagation</title>
+    <style>
+      body {
+        line-height: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <h3>preventDefault()</h3>
+      <a
+        id="child"
+        href="https://itnext.io/preventdefault-vs-stoppropagation-3631de9fe1c6"
+        target="_blank"
+        >source -> preventDefault()</a
+      >
+      <h4>
+        The event.preventDefault() will not allow the user to leave the page and
+        open the URL.
+      </h4>
+    </div>
+    <div>
+      <h3>StopPropagation()</h3>
+      <h4>
+        The event.stopPropagation() method stops <br />
+        the propagation of an event from occurring in the bubbling or capturing
+        phase.
+      </h4>
+      <a
+        id="child1"
+        href="https://itnext.io/preventdefault-vs-stoppropagation-3631de9fe1c6"
+        target="_blank"
+        >source -> stopPropagation()</a
+      >
+      <h4>
+        Clicking the element will allow the default action to occur but
+        propagation will be stopped...
+      </h4>
+    </div>
+    <script>
+      var preventDefault = document.getElementById("child");
+      var stopPropagation = document.getElementById("child1");
+
+      // ==================== preventDefault() ========================
+
+      // clicking the link will *not* allow the user to leave the page
+      preventDefault.onclick = function(e) {
+        e.preventDefault();
+        console.log("You prevented a link from opening the URL");
+      };
+
+      // clicking the parent node will run the following console statement because event propagation occurs
+      preventDefault.parentNode.onclick = function(e) {
+        console.log("You clicked my child element!");
+      };
+
+      // ==================== stopPropagation() ========================
+      // Clicking the element will allow the default action
+      // to occur but propagation will be stopped...
+      stopPropagation.onclick = function(e) {
+        e.stopPropagation();
+        console.log("Stop! no bubbles!");
+      };
+
+      // since propagation was stopped by the child element's onClick,
+      // this message will never be seen!
+      stopPropagation.parentNode.onclick = function(e) {
+        console.log("You will never see this message!");
+      };
+    </script>
+  </body>
+</html>

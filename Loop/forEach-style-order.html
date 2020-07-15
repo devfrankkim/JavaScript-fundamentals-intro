@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .sorted-list {
+      display: flex;
+    }
+    .sorted-list-item {
+      margin: 0 20px;
+      font-size: 2rem;
+    }
+  </style>
+  <body>
+    <div class="sorted-list" id="my-list"></div>
+
+    <script>
+      const listEl = document.getElementById("my-list");
+      const arr = [10, 100, 500, 20, 35];
+
+      arr.forEach((n) => {
+        const itemEl = document.createElement("div");
+        itemEl.className = "sorted-list-item";
+        itemEl.innerHTML = n;
+        itemEl.style.order = n;
+        listEl.appendChild(itemEl);
+      });
+    </script>
+  </body>
+</html>

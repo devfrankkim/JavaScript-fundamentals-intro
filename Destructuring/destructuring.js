@@ -39,3 +39,9 @@ console.log(nameA);
 // frank
 console.log(nameB);
 // andrea
+
+"Frank Kim".split(" "); // (2) ["Frank", "Kim"]
+
+let [firstName, surname] = "Frank Kim".split(" ");
+console.log(firstName); // Frank
+console.log(surname); // Kim

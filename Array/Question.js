@@ -107,6 +107,11 @@ let studentsReduce = students.reduce((a, b, index, array) => {
   //   } else
 
   if (index === array.length - 1) {
+    // console.log("index:", index);
+    // console.log("a:", a);
+    // console.log("b:", b);
+    // console.log("b.score:", b.score);
+    // console.log("array:", array);
     return (a + b.score) / array.length;
   }
   return a + b.score;

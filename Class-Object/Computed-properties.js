@@ -8,9 +8,11 @@ console.log(frank["name"]); // frank
 frank["hasJob"] = true;
 console.log(frank.hasJob); // true
 
+let objFrank = { name: "frank", value: "Direct from object" };
+
 function printValue(obj, value) {
   console.log(obj.value); // "Direct from object"
-  console.log(obj[value]); // frank -> for getting dynamic values
+  console.log(obj[value]); // "frank" -> for getting dynamic values
 }
 printValue(objFrank, "name");
 
@@ -19,6 +21,7 @@ function objectBracket(key, value) {
   console.log(key[value]);
   let obj = {};
   obj[key] = value;
+  console.log(obj, obj[key], obj.key);
   return obj;
 }
 

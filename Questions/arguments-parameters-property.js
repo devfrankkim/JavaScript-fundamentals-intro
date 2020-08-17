@@ -1,5 +1,7 @@
 let functionProperty = function (a, b, c, d, e) {
   console.log(functionProperty.length); // 5
+  console.log(arguments);
+  console.log(arguments.callee.length); // 5
   if (arguments.length === functionProperty.length) {
     console.log(" we have a match ");
   } else {
@@ -20,3 +22,4 @@ functionProperty(1, 2, 3, "params", ""); // we have a match
 
 // arguments is the array like structure of all the elements that have been passed and
 // all the parameters that have been passed in to the function
+// arguments.callee.length

@@ -204,30 +204,53 @@ const addExpression = function (a, b) {
   console.log("IIFE calling the function right away");
 })();
 
-const add = (a, b) => a + b;
-const substract = (a, b) => a - b;
-const divide = (a, b) => a / b;
-const multiply = (a, b) => a * b;
-const remainder = (a, b) => a % b;
+// const add = (a, b) => a + b;
+// const substract = (a, b) => a - b;
+// const divide = (a, b) => a / b;
+// const multiply = (a, b) => a * b;
+// const remainder = (a, b) => a % b;
 
-function calculate(add, a, b) {
-  return add(a, b);
-}
-function calculate(substract, a, b) {
-  return substract(a, b);
-}
-function calculate(divide, a, b) {
-  return divide(a, b);
-}
-function calculate(multiply, a, b) {
-  return multiply(a, b);
-}
-function calculate(remainder, a, b) {
-  return remainder(a, b);
-}
+// function calculate(add, a, b) {
+//   return add(a, b);
+// }
+// function calculate(substract, a, b) {
+//   return substract(a, b);
+// }
+// function calculate(divide, a, b) {
+//   return divide(a, b);
+// }
+// function calculate(multiply, a, b) {
+//   return multiply(a, b);
+// }
+// function calculate(remainder, a, b) {
+//   return remainder(a, b);
+// }
 
-calculate(add, 100, 100); // 200
-calculate(substract, 100, 100); // 0
-calculate(divide, 100, 100); // 1
-calculate(multiply, 100, 100); // 10000
-calculate(remainder, 100, 100); // 0
+// calculate(add, 100, 100); // 200
+// calculate(substract, 100, 100); // 0
+// calculate(divide, 100, 100); // 1
+// calculate(multiply, 100, 100); // 10000
+// calculate(remainder, 100, 100); // 0
+
+function calculate(command, a, b) {
+  switch (command) {
+    case "add":
+      return a + b;
+    case "substract":
+      return a - b;
+    case "divide":
+      return a / b;
+    case "multiply":
+      return a * b;
+    case "remainder":
+      return a % b;
+    default:
+      throw Error("unknown command");
+  }
+}
+console.log(calculate("add", 100, 100)); // 200
+console.log(calculate("substract", 100, 100)); // 0
+console.log(calculate("multiply", 100, 100)); // 10000
+console.log(calculate("divide", 100, 100)); // 1
+console.log(calculate("remainder", 100, 100)); // 0
+console.log(calculate("noCommand", 100, 100));

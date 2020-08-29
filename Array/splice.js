@@ -1,6 +1,8 @@
 // ======== splice: remove an item by index position and ADD ELEMENTS ========
 // delete & add
 
+// ======== Returning the deleted elements. ========
+
 let animals = ["cat", "dog", "salmon", "tessa", "tuna", "salmon"];
 animals.splice(0, 0, 1, 2, 3);
 

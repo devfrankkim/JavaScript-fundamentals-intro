@@ -8,6 +8,8 @@ console.log(animals); // (9) [1, 2, 3, "cat", "dog", "salmon", "tessa", "tuna",
 
 //splice(start: number, deleteCount?: number): T[];
 
+// Returning the deleted elements.
+
 // if you don't count the number, it will delete EVERYTHING
 // * Removes elements from an array and,
 // if necessary, inserts new elements in their place, returning the deleted elements.

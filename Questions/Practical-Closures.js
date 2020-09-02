@@ -1,7 +1,10 @@
 // Solve the problem occurring in the second closure example
 
+<<<<<<< HEAD
 // closure
 // setTimeout
+=======
+>>>>>>> 65b70641d26ea23ccd7f2de8e6752596967bb9f1
 // VAR is either 1. globally scoped or 2. scoped inside of its function
 // LET is scoped inside of CURLY BRACES
 

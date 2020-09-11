@@ -27,7 +27,7 @@ function color() {
   // console.log(c);
   // console.log(c.split(6));
 
-  return "#" + Math.random().toString(16).substring(2, 8);
+  return "#" + Math.random().toString(16).slice(2, 8);
 }
 
 console.log(color());
@@ -35,5 +35,6 @@ console.log(color());
 /*
 substring vs slice
 https://stackoverflow.com/questions/2243824/what-is-the-difference-between-string-slice-and-string-substring
+https://www.tothenew.com/blog/javascript-slice-vs-substring-vs-substr/
 
 */

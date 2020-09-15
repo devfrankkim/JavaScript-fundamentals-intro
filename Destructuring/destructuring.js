@@ -26,7 +26,7 @@ let newFamily = {
 
 const {
   getFamily,
-  status: { age },
+  status: { name, age },
 } = newFamily;
 
 var A = { name: "frank" };
@@ -45,3 +45,12 @@ console.log(nameB);
 let [firstName, surname] = "Frank Kim".split(" ");
 console.log(firstName); // Frank
 console.log(surname); // Kim
+
+let [first, second, third, fourth, fifth, ...last] = "Frank Kim";
+
+console.log(first); // F
+console.log(second); // r
+console.log(third); // a
+console.log(fourth); // n
+console.log(fifth); // k
+console.log(last); // [" ", "K", "i", "m"]

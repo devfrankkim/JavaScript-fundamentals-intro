@@ -50,27 +50,27 @@
       // ==================== preventDefault() ========================
 
       // clicking the link will *not* allow the user to leave the page
-      preventDefault.onclick = function(e) {
+      preventDefault.onclick = function (e) {
         e.preventDefault();
         console.log("You prevented a link from opening the URL");
       };
 
       // clicking the parent node will run the following console statement because event propagation occurs
-      preventDefault.parentNode.onclick = function(e) {
+      preventDefault.parentNode.onclick = function (e) {
         console.log("You clicked my child element!");
       };
 
       // ==================== stopPropagation() ========================
       // Clicking the element will allow the default action
       // to occur but propagation will be stopped...
-      stopPropagation.onclick = function(e) {
+      stopPropagation.onclick = function (e) {
         e.stopPropagation();
         console.log("Stop! no bubbles!");
       };
 
       // since propagation was stopped by the child element's onClick,
       // this message will never be seen!
-      stopPropagation.parentNode.onclick = function(e) {
+      stopPropagation.parentNode.onclick = function (e) {
         console.log("You will never see this message!");
       };
     </script>

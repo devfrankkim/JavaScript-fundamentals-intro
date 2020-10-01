@@ -33,6 +33,7 @@ one.printName(); // frank
 two.printName(); // frank
 anyKeyword.printName(); // frank
 
+// =========   who's invoking the function?   ========
 var contact = {
   firstName: "frank",
   printName: function () {

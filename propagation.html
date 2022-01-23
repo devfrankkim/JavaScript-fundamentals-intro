@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .magic {
+        background-color: rgb(255, 130, 130);
+        color: rgb(127, 255, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <form onclick="alert('form')">
+      FORM
+      <div onclick="alert('div')">
+        DIV
+        <p onclick="alert('p')">P</p>
+      </div>
+    </form>
+    <hr />
+    <div class="container">
+      <h4>Hi</h4>
+    </div>
+    <button class="btn">Click me</button>
+    <p>We can't add addEventListener to null that doesn't exist</p>
+    <h4>
+      The event is going to bubble up so we can "target" our parent container
+      <br /><br />
+      and that way, we are able to access the actual element we are clicking on
+    </h4>
+    <h4>
+      parent.addEventListener('click', function(e){e.target.classList.contains})
+    </h4>
+    <h4>e.target.classList.contains("className")</h4>
+    <h4>Event currentTarget is stopping propagation</h4>
+    <script>
+      const container = document.querySelector(".container");
+      const btn = document.querySelector(".btn");
+
+      const sayHello = (e) => {
+        // e.stopPropagation();
+        console.log("e.target", e.target);
+        console.log("e.currentTarget", e.currentTarget);
+      };
+
+      btn.addEventListener("click", function (e) {
+        let element = document.createElement("h4");
+        element.classList.add("magic");
+        element.textContent = "I am magic text content";
+        container.appendChild(element);
+      });
+
+      container.addEventListener("click", function (e) {
+        sayHello(e);
+        if (e.target.classList.contains("magic")) {
+          let element = document.createElement("p");
+          element.textContent =
+            "inside container: currentTarget and target pick only one element";
+          container.appendChild(element);
+        } else {
+          console.log("no class -> magic");
+        }
+      });
+      document.addEventListener("click", sayHello);
+      window.addEventListener("click", sayHello);
+    </script>
+  </body>
+</html>
